@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airvue by MedCuore - Response to Frontal Designs Questionnaire</title>
+    <style>
+        :root {
+            --primary: #0099CC; 
+            --primary-dark: #003366;
+            --secondary: #2ECC71; 
+            --background: #f8fafc;
+            --foreground: #0f172a;
+            --muted: #e2e8f0;
+            --muted-foreground: #64748b;
+            --card: #ffffff;
+            --card-foreground: #0f172a;
+            --border: #e2e8f0;
+            --input: #e2e8f0;
+            --ring: #94a3b8;
+            --radius: 0.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background-color: var(--card);
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .frontal-logo {
+            height: 55px;
+            width: auto;
+        }
+        
+        .airvue-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            text-align: right;
+        }
+        
+        .airvue-logo {
+            height: 45px;
+            margin-bottom: 0.25rem;
+        }
+        
+        .tagline {
+            font-size: 0.9rem;
+            color: var(--foreground);
+            margin-bottom: 0.5rem;
+        }
+        
+        .client-name {
+            color: var(--muted-foreground);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .response-text {
+            font-style: italic;
+            color: var(--muted-foreground);
+            font-size: 0.85rem;
+        }
+        
+        .date-info {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            text-align: right;
+        }
+
+        .brand-name {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .client-name {
+            color: var(--muted-foreground);
+            font-size: 1rem;
+        }
+
+        .section {
+            background-color: var(--card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--primary-dark);
+        }
+
+        .subsection {
+            margin-bottom: 1.5rem;
+        }
+
+        .subsection-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .color-sample {
+            height: 80px;
+            border-radius: var(--radius);
+            margin-bottom: 0.5rem;
+        }
+
+        .color-value {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--muted-foreground);
+        }
+
+        .application-item {
+            background-color: var(--muted);
+            border-radius: var(--radius);
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-label {
+            width: 100px;
+            font-weight: 500;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--muted);
+            color: var(--muted-foreground);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .text-box {
+            background-color: var(--muted);
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            white-space: pre-line;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="g3.png" alt="Frontal Designs Logo" class="logo">
+                    <div>
+                        <img src="g10.avif" alt="Frontal Designs Logo" class="logo">
+                    <p class="client-name">by MedCuore Medical Solutions Pvt Ltd</p>
+                    <p style="margin-top: 0.5rem; font-style: italic;">Response to Frontal Designs Questionnaire</p>
+                </div>
+                </div>
+                <div>
+                    <p>Date: March 18, 2025</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="section">
+            <h2 class="section-title">Brand Overview</h2>
+            <div class="subsection">
+                <h3 class="subsection-title">Business Description</h3>
+                <p>Airvue by MedCuore provides AI-driven air quality solutions, including IoT-based monitors, purifiers, and HVAC-integrated fragrance systems for hospitals, offices, airports, and smart cities. Our real-time analytics optimize air quality, enhance well-being, and support ESG goals. We offer B2B partnerships, CSR collaborations, and pilot projects to improve indoor and outdoor environments.</p>
+            </div>
+            <div class="subsection">
+                <h3 class="subsection-title">Mission Statement</h3>
+                <p>At Airvue by MedCuore, our mission is to revolutionize air quality management through data-driven, AI-powered solutions that create healthier, safer, and more sustainable environments. We are committed to improving indoor and outdoor air quality with innovative monitoring, purification, and fragrance systems, empowering businesses and communities to make informed decisions for better well-being, productivity, and environmental impact.</p>
+            </div>
+            <div class="subsection">
+                <h3 class="subsection-title">Industry Sector</h3>
+                <p>Environment and CleanTech</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Brand Voice & Personality</h2>
+            <div class="subsection">
+                <h3 class="subsection-title">Brand Voice</h3>
+                <p>Airvue by MedCuore's brand voice is:</p>
+                <ul>
+                    <li><strong>Professional & Technical</strong> – Backed by scientific data, AI-driven insights, and expertise in air quality solutions.</li>
+                    <li><strong>Conversational & Engaging</strong> – Easy to understand, making complex air quality concepts accessible to businesses and consumers.</li>
+                    <li><strong>Trustworthy & ESG-Focused</strong> – Emphasizing sustainability, compliance, and health benefits.</li>
+                    <li><strong>Innovative & Solution-Oriented</strong> – Highlighting cutting-edge technology and practical applications for real-world air quality challenges.</li>
+                </ul>
+            </div>
+            <div class="subsection">
+                <h3 class="subsection-title">Brand Personality</h3>
+                <div>
+                    <span class="badge">Trustworthy</span>
+                    <span class="badge">Innovative</span>
+                    <span class="badge">Cutting-edge</span>
+                    <span class="badge">Eco-friendly</span>
+                    <span class="badge">Minimalist</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Visual Identity</h2>
+            <div class="subsection">
+                <h3 class="subsection-title">Color Palette</h3>
+                <div class="grid">
+                    <div class="card">
+                        <div class="color-sample" style="background-color: #0099CC;"></div>
+                        <p><strong>Blue (Primary)</strong></p>
+                        <p class="color-value">#0099CC</p>
+                    </div>
+                    <div class="card">
+                        <div class="color-sample" style="background-color: #00AEEF;"></div>
+                        <p><strong>Blue (Secondary)</strong></p>
+                        <p class="color-value">#00AEEF</p>
+                    </div>
+                    <div class="card">
+                        <div class="color-sample" style="background-color: #003366;"></div>
+                        <p><strong>Dark Blue</strong></p>
+                        <p class="color-value">#003366</p>
+                    </div>
+                    <div class="card">
+                        <div class="color-sample" style="background-color: #4CAF50;"></div>
+                        <p><strong>Green (Primary)</strong></p>
+                        <p class="color-value">#4CAF50</p>
+                    </div>
+                    <div class="card">
+                        <div class="color-sample" style="background-color: #2ECC71;"></div>
+                        <p><strong>Green (Secondary)</strong></p>
+                        <p class="color-value">#2ECC71</p>
+                    </div>
+                    <div class="card">
+                        <div class="color-sample" style="background-color: #FFFFFF; border: 1px solid #e2e8f0;"></div>
+                        <p><strong>White</strong></p>
+                        <p class="color-value">#FFFFFF</p>
+                    </div>
+                </div>
+            </div>
+            <div class="subsection">
+                <h3 class="subsection-title">Typography</h3>
+                <p><strong>Font Style:</strong> Sans-serif</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Applications</h2>
+            <div class="grid">
+                <div>
+                    <div class="application-item">Website</div>
+                    <div class="application-item">Social Media</div>
+                    <div class="application-item">Business Cards</div>
+                    <div class="application-item">Signage</div>
+                </div>
+                <div>
+                    <div class="application-item">Product Packaging</div>
+                    <div class="application-item">Print Materials</div>
+                    <div class="application-item">Digital Advertising</div>
+                    <div class="application-item">Mobile App</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Target Audience</h2>
+            <div class="subsection">
+                <h3 class="subsection-title">1. Demographics</h3>
+                <div class="subsection">
+                    <h4 class="subsection-title">Industry Segments:</h4>
+                    <ul>
+                        <li><strong>Corporates & Offices</strong> – Facility managers, HR leaders, sustainability officers</li>
+                        <li><strong>Healthcare</strong> – Hospitals, clinics, diagnostic centers, medical professionals</li>
+                        <li><strong>Airports & Transportation Hubs</strong> – Airport authorities, metro stations, smart city planners</li>
+                        <li><strong>Educational Institutions</strong> – Schools, universities, research labs</li>
+                        <li><strong>Hospitality & Retail</strong> – Hotels, malls, restaurants</li>
+                        <li><strong>Manufacturing & Industrial Spaces</strong> – Compliance officers, factory managers</li>
+                        <li><strong>Government & Smart Cities</strong> – Municipalities, environmental agencies, policy makers</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h4 class="subsection-title">Geographic Focus:</h4>
+                    <ul>
+                        <li>Urban & Metro Cities (High pollution & poor indoor air quality areas)</li>
+                        <li>Smart Cities & Developing Infrastructure Projects</li>
+                        <li>Industrial Hubs & Business Parks</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h4 class="subsection-title">Business Size:</h4>
+                    <ul>
+                        <li>Large Enterprises – Corporates investing in ESG compliance</li>
+                        <li>SMEs & Startups – Looking for cost-effective air quality solutions</li>
+                        <li>Government & Institutional Clients – Public health and environmental impact projects</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="subsection">
+                <h3 class="subsection-title">2. Psychographics</h3>
+                <ul>
+                    <li><strong>Health-Conscious & ESG-Driven Professionals</strong>
+                        <ul>
+                            <li>Concerned about employee wellness, sustainability, and indoor air quality</li>
+                            <li>Value scientific, data-backed solutions for air management</li>
+                            <li>Interested in green building certifications, wellness initiatives, and regulatory compliance</li>
+                        </ul>
+                    </li>
+                    <li><strong>Technology & Data-Oriented Decision Makers</strong>
+                        <ul>
+                            <li>Open to IoT, AI-based automation, and real-time monitoring</li>
+                            <li>Looking for energy-efficient and smart solutions</li>
+                        </ul>
+                    </li>
+                    <li><strong>Early Adopters & Innovators</strong>
+                        <ul>
+                            <li>Businesses and institutions leading workplace wellness and ESG policies</li>
+                            <li>Environmentally responsible organizations investing in carbon neutrality and net-zero goals</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="subsection">
+                <h3 class="subsection-title">3. Behavioral Traits</h3>
+                <div class="subsection">
+                    <h4 class="subsection-title">Needs & Motivations:</h4>
+                    <ul>
+                        <li>Improve air quality, productivity, and occupant comfort</li>
+                        <li>Reduce pollution impact on employees, students, and customers</li>
+                        <li>Comply with air quality regulations (IAQ, ESG, workplace safety)</li>
+                        <li>Gain public trust and brand differentiation through sustainable practices</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h4 class="subsection-title">Buying Behavior:</h4>
+                    <ul>
+                        <li>B2B Decision-Making Process – Involves facility managers, procurement teams, and CXOs</li>
+                        <li>Prefers scalable, data-driven, and cost-effective air quality solutions</li>
+                        <li>CSR & ESG Investments – Open to pilots, partnerships, and sustainability initiatives</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <h4 class="subsection-title">Challenges They Face:</h4>
+                    <ul>
+                        <li>Lack of real-time air quality visibility</li>
+                        <li>High maintenance costs of traditional HVAC and purifiers</li>
+                        <li>Regulatory compliance & workplace safety concerns</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Market Analysis</h2>
+            <div class="subsection">
+                <h3 class="subsection-title">Competitors</h3>
+                <div class="subsection">
+                    <h4 class="subsection-title">1. Direct Competitors (Air Quality Monitoring & Purification)</h4>
+                    <p>Airthings, IQAir, Aeroqual, Temtop, BreezoMeter, Airveda – Specialize in IoT air quality monitors and purifiers for homes and businesses.</p>
+                </div>
+                <div class="subsection">
+                    <h4 class="subsection-title">2. Indirect Competitors (HVAC & Smart Indoor Air Solutions)</h4>
+                    <p>Honeywell, Siemens, Blueair, Sharp, Carrier – Focus on smart HVAC, air purification, and sustainability-driven air management.</p>
+                </div>
+                <div class="subsection">
+                    <h4 class="subsection-title">3. Emerging Indian Competitors (Smart City & B2B IoT Solutions)</h4>
+                    <p>Oizom, Prana Air, Ambee – Offer IoT-based air quality monitoring for smart cities and industries.</p>
+                </div>
+            </div>
+            <div class="subsection">
+                <h3 class="subsection-title">Inspirational Brands/Logos</h3>
+                <p>Kaiterra, Sensirion, Ambee, Praan, Airthings</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Additional Notes & Strategy</h2>
+            <div class="text-box">
+                Focus on AI-driven air quality solutions for B2B, corporates, healthcare, airports, and smart cities. Emphasize ESG compliance, health benefits, and sustainability in messaging. Maintain a professional yet accessible tone—clear, data-driven, and engaging. Use a clean and modern brand aesthetic with blue, green, and neutral colors. Differentiate with HVAC-integrated fragrance systems and AI-powered analytics. Target CSR partnerships, government projects, and enterprise collaborations.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">File Formats</h2>
+            <div>
+                <span class="badge">AI (Adobe Illustrator)</span>
+                <span class="badge">PDF</span>
+                <span class="badge">JPG</span>
+                <span class="badge">PNG (transparent)</span>
+                <span class="badge">SVG</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Existing Branding Material</h2>
+            <p>"Currently we have given you the logo which highlights the significance of data. We can share with you the pamphlets and brochures."</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-info">
+                <span class="contact-label">Contact:</span>
+                <span>Britto Shibi</span>
+            </div>
+            <div class="contact-info">
+                <span class="contact-label">Email:</span>
+                <span>britto@medcuore.com</span>
+            </div>
+            <div class="contact-info">
+                <span class="contact-label">Phone:</span>
+                <span>6380800648</span>
+            </div>
+            <div class="contact-info">
+                <span class="contact-label">Deadline:</span>
+                <span>June 1, 2025</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Submitted by: Paul Pradeep J</p>
+            <p>Submission Date: March 18, 2025</p>
+        </div>
+    </div>
+</body>
+</html>
